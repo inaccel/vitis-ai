@@ -1,3 +1,6 @@
+[submodule "huggingface/models/resnet50"]
+	path = huggingface/models/resnet50
+	url = https://huggingface.co/inaccel/resnet50
 [submodule "huggingface/models/yolov3_adas_pruned_0_9"]
 	path = huggingface/models/yolov3_adas_pruned_0_9
 	url = https://huggingface.co/inaccel/yolov3_adas_pruned_0_9
