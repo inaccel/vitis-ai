@@ -1,0 +1,25 @@
+services:
+  traefik:
+    command:
+    - --certificatesresolvers.letsencrypt.acme.email=${email}
+    - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
+    - --certificatesresolvers.letsencrypt.acme.tlsChallenge=true
+    - --entrypoints.web.address=:80
+    - --entrypoints.web.http.redirections.entrypoint.permanent=true
+    - --entrypoints.web.http.redirections.entryPoint.scheme=https
+    - --entrypoints.web.http.redirections.entryPoint.to=websecure
+    - --entrypoints.websecure.address=:443
+    - --log.level=${log_level}
+    - --providers.docker=true
+    - --providers.docker.exposedbydefault=false
+    image: traefik
+    ports:
+    - 80:80
+    - 443:443
+    volumes:
+    - letsencrypt:/letsencrypt
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+volumes:
+  letsencrypt:
+  volume:
+    driver: inaccel
