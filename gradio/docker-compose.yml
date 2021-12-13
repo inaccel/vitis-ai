@@ -13,6 +13,15 @@ services:
     - --providers.docker=true
     - --providers.docker.exposedbydefault=false
     image: traefik
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.traefik.entrypoints=websecure
+    - traefik.http.routers.traefik.middlewares=traefik
+    - traefik.http.routers.traefik.rule=Host(`${host}`)
+    - traefik.http.routers.traefik.tls.certresolver=letsencrypt
+    - traefik.http.middlewares.traefik.redirectregex.permanent=true
+    - traefik.http.middlewares.traefik.redirectregex.regex=.*
+    - traefik.http.middlewares.traefik.redirectregex.replacement=${huggingface}
     ports:
     - 80:80
     - 443:443
