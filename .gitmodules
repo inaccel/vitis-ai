@@ -1,3 +1,6 @@
+[submodule "huggingface/models/inception_v1_tf"]
+	path = huggingface/models/inception_v1_tf
+	url = https://huggingface.co/inaccel/inception_v1_tf
 [submodule "huggingface/models/resnet50"]
 	path = huggingface/models/resnet50
 	url = https://huggingface.co/inaccel/resnet50
